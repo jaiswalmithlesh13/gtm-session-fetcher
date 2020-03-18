@@ -389,7 +389,9 @@ NSString *const kGTMSessionFetcherServiceSessionKey
     if (hasDispatcher) {
       GTMSESSION_ASSERT_DEBUG([fetcherDelegate isKindOfClass:[GTMSessionFetcherSessionDelegateDispatcher class]],
                               @"Fetcher delegate class: %@", [fetcherDelegate class]);
-      return (GTMSessionFetcherSessionDelegateDispatcher *)fetcherDelegate;
+      if ([fetcherDelegate isKindOfClass:GTMSessionFetcherSessionDelegateDispatcher.class]) {           
+        return (GTMSessionFetcherSessionDelegateDispatcher *)fetcherDelegate;
+      }
     }
   }
   return nil;
